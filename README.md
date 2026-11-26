@@ -1,6 +1,6 @@
 # trajlint
 
-[![tests](https://github.com/AI-WFox/khainhanh/actions/workflows/tests.yml/badge.svg)](https://github.com/AI-WFox/khainhanh/actions/workflows/tests.yml)
+[![tests](https://github.com/AI-WFox/trajlint/actions/workflows/tests.yml/badge.svg)](https://github.com/AI-WFox/trajlint/actions/workflows/tests.yml)
 ![license](https://img.shields.io/badge/license-Apache%202.0-blue)
 
 **Find broken episodes in robot-learning datasets before you train on them.**
@@ -12,7 +12,7 @@ clashing episode numbers. A policy trained on that data quietly gets worse.
 (local folder or Hugging Face Hub) and tells you which episodes to fix, trim or drop.
 
 ```bash
-pip install git+https://github.com/AI-WFox/khainhanh
+pip install git+https://github.com/AI-WFox/trajlint
 trajlint check lerobot/svla_so100_stacking --no-video
 ```
 
