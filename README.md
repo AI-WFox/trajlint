@@ -40,7 +40,9 @@ recordings merged under the same episode number, episodes where nothing moves,
 aborted takes. Almost 1 in 5 episodes starts with 1.5 s or more of the robot
 sitting idle. Details: [docs/week1-findings.md](docs/week1-findings.md).
 
-You get three files in `trajlint-report/`:
+## Output
+
+`trajlint check` writes three files to `trajlint-report/`:
 
 | File | What it is |
 | --- | --- |
