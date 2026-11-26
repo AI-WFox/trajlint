@@ -1,0 +1,1000 @@
+{
+  "datasets_checked": 65,
+  "datasets_skipped": 6,
+  "datasets_failed": 4,
+  "episodes": 6953,
+  "episodes_bad": 209,
+  "episodes_review": 115,
+  "datasets_with_any_bad": 11,
+  "checks": {
+    "idle_start": {
+      "episodes": 1314,
+      "datasets": 46
+    },
+    "idle_end": {
+      "episodes": 659,
+      "datasets": 44
+    },
+    "pause": {
+      "episodes": 184,
+      "datasets": 34
+    },
+    "index_conflict": {
+      "episodes": 122,
+      "datasets": 2
+    },
+    "dead_episode": {
+      "episodes": 87,
+      "datasets": 9
+    },
+    "too_short": {
+      "episodes": 53,
+      "datasets": 14
+    },
+    "frozen_state": {
+      "episodes": 44,
+      "datasets": 17
+    },
+    "tracking_error": {
+      "episodes": 42,
+      "datasets": 12
+    },
+    "too_long": {
+      "episodes": 11,
+      "datasets": 3
+    },
+    "duplicate": {
+      "episodes": 7,
+      "datasets": 1
+    }
+  },
+  "rows": [
+    {
+      "id": "lerobot/svla_so101_pickplace",
+      "version": "v3.0",
+      "frames": 11939,
+      "episodes": 50,
+      "ok": 49,
+      "review": 1,
+      "bad": 0,
+      "checks": {
+        "idle_start": 5,
+        "frozen_state": 1
+      }
+    },
+    {
+      "id": "kmg0620/so101_bomb_pick_place_v1",
+      "version": "v3.0",
+      "frames": 57211,
+      "episodes": 150,
+      "ok": 127,
+      "review": 1,
+      "bad": 22,
+      "checks": {
+        "pause": 27,
+        "index_conflict": 22,
+        "idle_start": 6,
+        "idle_end": 3,
+        "frozen_state": 2,
+        "tracking_error": 1
+      }
+    },
+    {
+      "id": "SO-101-robot-learning/so101_pick_place",
+      "version": "v3.0",
+      "frames": 0,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 39,
+        "pause": 1
+      }
+    },
+    {
+      "id": "1006labs/so101-table-clean-mujoco",
+      "version": "v2.1",
+      "frames": 2043077,
+      "skipped": "too big"
+    },
+    {
+      "id": "aegrabs/so101_clear_plate",
+      "error": "GatedRepoError: 401 Client Error. (Request ID: Root=1-6b086b08-250b355a384539036978f4c3;ab0f47a6-7535-4d6c-9d41-50043a355653)\n\nCannot access gated repo for url https://huggingface.co/datasets/aegrabs/so101_clear_plate/resolve/main/meta/info.json.\nAccess to dataset aegrabs/so101_clear_plate is restricted. You must have access to it and be authenticated to access it. Please log in."
+    },
+    {
+      "id": "geonmin-kim/SO101-lv4-3color-cube-mat-to-mat-no-human-reset-v1",
+      "version": "v3.0",
+      "frames": 79145,
+      "episodes": 246,
+      "ok": 246,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 34,
+        "idle_end": 1
+      }
+    },
+    {
+      "id": "Embodied-AI-6/blue_so101_color_blocks_10ep_v1_20260526_175604",
+      "version": "v3.0",
+      "frames": 6534,
+      "episodes": 10,
+      "ok": 7,
+      "review": 3,
+      "bad": 0,
+      "checks": {
+        "idle_start": 4,
+        "too_short": 3,
+        "idle_end": 3,
+        "pause": 1
+      }
+    },
+    {
+      "id": "shilpitha-03/so101_cube_in_box_20261030_164459",
+      "version": "v3.0",
+      "frames": 55257,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 13,
+        "pause": 4,
+        "idle_end": 2
+      }
+    },
+    {
+      "id": "5hadytru/so101_bench_sim_WM_v2.1",
+      "version": "v2.1",
+      "frames": 1996120,
+      "skipped": "too big"
+    },
+    {
+      "id": "cagataydev/so101-tic-tac-toe",
+      "version": "v3.0",
+      "frames": 57092,
+      "episodes": 210,
+      "ok": 202,
+      "review": 8,
+      "bad": 0,
+      "checks": {
+        "tracking_error": 7,
+        "idle_start": 6,
+        "pause": 5,
+        "idle_end": 2,
+        "too_long": 1,
+        "frozen_state": 1
+      }
+    },
+    {
+      "id": "IlyaGusev/so101_pick_gum",
+      "version": "v3.0",
+      "frames": 27147,
+      "episodes": 155,
+      "ok": 148,
+      "review": 7,
+      "bad": 0,
+      "checks": {
+        "idle_start": 8,
+        "tracking_error": 5,
+        "pause": 3,
+        "frozen_state": 2
+      }
+    },
+    {
+      "id": "cagataydev/so101-tic-tac-toe-sim-v2",
+      "version": "v3.0",
+      "frames": 930088,
+      "skipped": "too big"
+    },
+    {
+      "id": "Cache-SCA/SO101-teleop_stack_RGBblock_on_bluedish_100epi_more",
+      "version": "v3.0",
+      "frames": 22522,
+      "episodes": 100,
+      "ok": 99,
+      "review": 1,
+      "bad": 0,
+      "checks": {
+        "idle_start": 32,
+        "pause": 1,
+        "idle_end": 1,
+        "frozen_state": 1
+      }
+    },
+    {
+      "id": "RoboColosseum/so101-upright-bottle",
+      "version": "v3.0",
+      "frames": 35934,
+      "episodes": 100,
+      "ok": 100,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 2
+      }
+    },
+    {
+      "id": "purewater0901/so101_isaaclab_pick_and_place",
+      "version": "v3.0",
+      "frames": 353297,
+      "skipped": "too big"
+    },
+    {
+      "id": "youliangtan/so101-table-cleanup",
+      "version": "v2.1",
+      "frames": 47513,
+      "episodes": 80,
+      "ok": 78,
+      "review": 0,
+      "bad": 2,
+      "checks": {
+        "too_short": 2,
+        "dead_episode": 2,
+        "idle_start": 1,
+        "pause": 1,
+        "idle_end": 1
+      }
+    },
+    {
+      "id": "hungho77/so101-left_arm_task_drawer_placing_red_squre_block",
+      "version": "v3.0",
+      "frames": 60208,
+      "episodes": 57,
+      "ok": 57,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_end": 3,
+        "pause": 2
+      }
+    },
+    {
+      "id": "hungho77/so101_left_arm_open_drawer_pick_red_cube_stack_on_blue_cube",
+      "version": "v3.0",
+      "frames": 39403,
+      "episodes": 51,
+      "ok": 51,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_end": 3
+      }
+    },
+    {
+      "id": "StrandsAgents/so101_arm2_fill_wrist",
+      "version": "v3.0",
+      "frames": 22621,
+      "episodes": 65,
+      "ok": 64,
+      "review": 1,
+      "bad": 0,
+      "checks": {
+        "pause": 2,
+        "frozen_state": 1
+      }
+    },
+    {
+      "id": "StrandsAgents/so101_arm1_fill_trim",
+      "version": "v3.0",
+      "frames": 32943,
+      "episodes": 97,
+      "ok": 97,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "pause": 2
+      }
+    },
+    {
+      "id": "5hadytru/so101_bench_real",
+      "version": "v3.0",
+      "frames": 2465943,
+      "skipped": "too big"
+    },
+    {
+      "id": "RoboColosseum/so101-stack-cubes",
+      "version": "v3.0",
+      "frames": 41359,
+      "episodes": 100,
+      "ok": 94,
+      "review": 6,
+      "bad": 0,
+      "checks": {
+        "tracking_error": 6,
+        "pause": 1,
+        "idle_end": 1
+      }
+    },
+    {
+      "id": "RoboColosseum/so101-cube-drawer",
+      "version": "v3.0",
+      "frames": 38687,
+      "episodes": 100,
+      "ok": 100,
+      "review": 0,
+      "bad": 0,
+      "checks": {}
+    },
+    {
+      "id": "DmitryStrog/so101_pnp_merged_500",
+      "version": "v3.0",
+      "frames": 277740,
+      "episodes": 521,
+      "ok": 518,
+      "review": 3,
+      "bad": 0,
+      "checks": {
+        "idle_start": 287,
+        "idle_end": 9,
+        "pause": 7,
+        "frozen_state": 3
+      }
+    },
+    {
+      "id": "dreamscale-labs/so101-pick-place",
+      "version": "v3.0",
+      "frames": 11939,
+      "episodes": 50,
+      "ok": 49,
+      "review": 1,
+      "bad": 0,
+      "checks": {
+        "idle_start": 5,
+        "frozen_state": 1
+      }
+    },
+    {
+      "id": "jchandru08/so100_press_red_button",
+      "version": "v2.1",
+      "frames": 19028,
+      "episodes": 29,
+      "ok": 25,
+      "review": 4,
+      "bad": 0,
+      "checks": {
+        "idle_end": 7,
+        "pause": 4,
+        "frozen_state": 4,
+        "idle_start": 1
+      }
+    },
+    {
+      "id": "lerobot/svla_so100_pickplace",
+      "version": "v3.0",
+      "frames": 19631,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 32,
+        "idle_end": 2,
+        "pause": 1
+      }
+    },
+    {
+      "id": "lerobot/svla_so100_sorting",
+      "version": "v3.0",
+      "frames": 35713,
+      "episodes": 52,
+      "ok": 50,
+      "review": 0,
+      "bad": 2,
+      "checks": {
+        "idle_start": 12,
+        "dead_episode": 2,
+        "too_short": 1
+      }
+    },
+    {
+      "id": "lerobot/svla_so100_stacking",
+      "version": "v3.0",
+      "frames": 22956,
+      "episodes": 56,
+      "ok": 51,
+      "review": 1,
+      "bad": 4,
+      "checks": {
+        "idle_start": 19,
+        "dead_episode": 4,
+        "too_short": 3,
+        "pause": 1
+      }
+    },
+    {
+      "id": "allenai/MolmoAct2-SO100_101-Dataset",
+      "error": "RemoteEntryNotFoundError: 404 Client Error. (Request ID: Root=1-6b086b15-6a64b31c1085a9035346dafe;b761ef6c-47bb-4833-b217-e09cbd7b0057)\n\nEntry Not Found for url: https://huggingface.co/datasets/allenai/MolmoAct2-SO100_101-Dataset/resolve/main/meta/info.json."
+    },
+    {
+      "id": "00ri/so100_battery",
+      "version": "v2.1",
+      "frames": 24263,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 44,
+        "idle_end": 15,
+        "pause": 1
+      }
+    },
+    {
+      "id": "VoicAndrei/so100_cubes_noaptea_companiilor_2",
+      "version": "v2.1",
+      "frames": 119105,
+      "episodes": 133,
+      "ok": 131,
+      "review": 0,
+      "bad": 2,
+      "checks": {
+        "too_short": 2,
+        "dead_episode": 2,
+        "idle_start": 2
+      }
+    },
+    {
+      "id": "pranavsaroha/so100_medicine_0602",
+      "version": "v2.1",
+      "frames": 85877,
+      "episodes": 16,
+      "ok": 14,
+      "review": 2,
+      "bad": 0,
+      "checks": {
+        "idle_end": 13,
+        "idle_start": 5,
+        "pause": 3,
+        "frozen_state": 2
+      }
+    },
+    {
+      "id": "maux/so100_test",
+      "version": "v2.1",
+      "frames": 28720,
+      "episodes": 40,
+      "ok": 40,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 38,
+        "idle_end": 31,
+        "pause": 4
+      }
+    },
+    {
+      "id": "sergiov2000/so100_movella_ball_usability_u1_pick8",
+      "version": "v2.1",
+      "frames": 779,
+      "episodes": 1,
+      "ok": 1,
+      "review": 0,
+      "bad": 0,
+      "checks": {}
+    },
+    {
+      "id": "jccj/so100_block_in_cup",
+      "version": "v2.1",
+      "frames": 21782,
+      "episodes": 50,
+      "ok": 49,
+      "review": 1,
+      "bad": 0,
+      "checks": {
+        "idle_start": 12,
+        "pause": 6,
+        "idle_end": 1,
+        "tracking_error": 1
+      }
+    },
+    {
+      "id": "hamidkaloorazi/so100_bi_5s_gab_green_t",
+      "version": "v2.1",
+      "frames": 135172,
+      "episodes": 995,
+      "ok": 921,
+      "review": 5,
+      "bad": 69,
+      "checks": {
+        "idle_end": 196,
+        "dead_episode": 69,
+        "pause": 33,
+        "idle_start": 28,
+        "duplicate": 7,
+        "too_short": 3,
+        "frozen_state": 2,
+        "tracking_error": 2
+      }
+    },
+    {
+      "id": "thomas0829/bimanual_so100_grab",
+      "version": "v2.1",
+      "frames": 162178,
+      "episodes": 100,
+      "ok": 88,
+      "review": 12,
+      "bad": 0,
+      "checks": {
+        "idle_start": 96,
+        "idle_end": 24,
+        "pause": 13,
+        "frozen_state": 12
+      }
+    },
+    {
+      "id": "hamidkaloorazi/so100_bi_towel_hadi_gray_only",
+      "version": "v2.1",
+      "frames": 129259,
+      "episodes": 501,
+      "ok": 490,
+      "review": 11,
+      "bad": 0,
+      "checks": {
+        "too_short": 10,
+        "idle_end": 3,
+        "idle_start": 3,
+        "pause": 1,
+        "frozen_state": 1
+      }
+    },
+    {
+      "id": "LeRobot-worldwide-hackathon/291-jpizarrom-hilserl_so100_push_v2_cropped_resized",
+      "version": "v2.1",
+      "frames": 2940,
+      "episodes": 40,
+      "ok": 40,
+      "review": 0,
+      "bad": 0,
+      "checks": {}
+    },
+    {
+      "id": "LeRobot-worldwide-hackathon/291-jpizarrom-hilserl_so100_push_v2",
+      "version": "v2.1",
+      "frames": 2940,
+      "episodes": 40,
+      "ok": 40,
+      "review": 0,
+      "bad": 0,
+      "checks": {}
+    },
+    {
+      "id": "LeRobot-worldwide-hackathon/291-jpizarrom-hilserl_so100_push_v1",
+      "version": "v2.1",
+      "frames": 1709,
+      "episodes": 20,
+      "ok": 20,
+      "review": 0,
+      "bad": 0,
+      "checks": {}
+    },
+    {
+      "id": "LeRobot-worldwide-hackathon/291-jpizarrom-hilserl_so100_push_v0",
+      "version": "v2.1",
+      "frames": 1788,
+      "episodes": 20,
+      "ok": 19,
+      "review": 1,
+      "bad": 0,
+      "checks": {
+        "frozen_state": 1
+      }
+    },
+    {
+      "id": "aaronsu11/so100_lego",
+      "version": "v2.1",
+      "frames": 55617,
+      "episodes": 100,
+      "ok": 100,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_end": 68,
+        "idle_start": 51,
+        "pause": 7
+      }
+    },
+    {
+      "id": "apayan/so100_ball8",
+      "version": "v2.1",
+      "frames": 110416,
+      "episodes": 104,
+      "ok": 96,
+      "review": 7,
+      "bad": 1,
+      "checks": {
+        "idle_start": 87,
+        "idle_end": 22,
+        "pause": 18,
+        "frozen_state": 7,
+        "too_short": 1,
+        "dead_episode": 1
+      }
+    },
+    {
+      "id": "Loki0929/so100_duck",
+      "version": "v2.1",
+      "frames": 133320,
+      "episodes": 300,
+      "ok": 300,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 182,
+        "idle_end": 13,
+        "pause": 1
+      }
+    },
+    {
+      "id": "ycdamn1988/so100_0517",
+      "version": "v2.1",
+      "frames": 48004,
+      "episodes": 150,
+      "ok": 149,
+      "review": 1,
+      "bad": 0,
+      "checks": {
+        "idle_end": 1,
+        "tracking_error": 1
+      }
+    },
+    {
+      "id": "Odog16/so100_tea_towel_folding_v1",
+      "version": "v2.1",
+      "frames": 63513,
+      "episodes": 141,
+      "ok": 129,
+      "review": 12,
+      "bad": 0,
+      "checks": {
+        "idle_start": 21,
+        "idle_end": 13,
+        "too_short": 12,
+        "pause": 5
+      }
+    },
+    {
+      "id": "VoicAndrei/so100_kitchen",
+      "version": "v2.1",
+      "frames": 476841,
+      "skipped": "too big"
+    },
+    {
+      "id": "juni3227/so100_test_cap02_sideway",
+      "version": "v2.1",
+      "frames": 38075,
+      "episodes": 61,
+      "ok": 61,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_end": 5,
+        "too_long": 2,
+        "pause": 1
+      }
+    },
+    {
+      "id": "lerobot/koch_pick_place_5_lego",
+      "version": "v3.0",
+      "frames": 37972,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {}
+    },
+    {
+      "id": "OpenGraphLabs-Research/lerobot-simulation-koch-arm-to-the-shelf-01",
+      "version": "v3.0",
+      "frames": 478,
+      "error": "OSError: Unexpected end of stream: Page was smaller (2065) than expected (2884)"
+    },
+    {
+      "id": "OpenGraphLabs-Research/lerobot-simulation-koch-arm-over-the-barrier-01",
+      "version": "v3.0",
+      "frames": 424,
+      "episodes": 166,
+      "ok": 64,
+      "review": 2,
+      "bad": 100,
+      "checks": {
+        "index_conflict": 100,
+        "too_long": 8,
+        "too_short": 3,
+        "frozen_state": 2,
+        "idle_end": 1,
+        "pause": 1,
+        "tracking_error": 1
+      }
+    },
+    {
+      "id": "danaaubakirova/koch_test",
+      "version": "v2.0",
+      "frames": 16602,
+      "episodes": 51,
+      "ok": 50,
+      "review": 0,
+      "bad": 1,
+      "checks": {
+        "idle_start": 30,
+        "idle_end": 7,
+        "pause": 1,
+        "too_short": 1,
+        "dead_episode": 1,
+        "tracking_error": 1
+      }
+    },
+    {
+      "id": "lerobot/koch_pick_place_1_lego",
+      "version": "v3.0",
+      "frames": 39693,
+      "episodes": 102,
+      "ok": 102,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_end": 7,
+        "idle_start": 5
+      }
+    },
+    {
+      "id": "aliberts/koch_tutorial",
+      "version": "v2.0",
+      "frames": 21267,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 17,
+        "idle_end": 17
+      }
+    },
+    {
+      "id": "lance-format/koch_pick_place_5_lego-lance",
+      "version": "v3.0",
+      "frames": 37972,
+      "error": "FileNotFoundError: no parquet files under /tmp/hfcache/datasets--lance-format--koch_pick_place_5_lego-lance/snapshots/f5076f10dc6594b30088150401ca8cd5b0117049/data"
+    },
+    {
+      "id": "hangwu/koch_pick_terminal",
+      "version": "v2.1",
+      "frames": 24157,
+      "episodes": 85,
+      "ok": 85,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 29
+      }
+    },
+    {
+      "id": "lerobot/koch_pick_place_5_lego_random_pose",
+      "version": "v3.0",
+      "frames": 36013,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 3,
+        "idle_end": 3
+      }
+    },
+    {
+      "id": "lerobot/koch_pick_place_1_lego_raph",
+      "version": "v3.0",
+      "frames": 32951,
+      "episodes": 100,
+      "ok": 100,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_end": 4,
+        "idle_start": 2
+      }
+    },
+    {
+      "id": "shashank2806/koch_test_8",
+      "version": "v2.0",
+      "frames": 25693,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 38
+      }
+    },
+    {
+      "id": "dop0/koch_pick_terminal",
+      "version": "v2.1",
+      "frames": 13667,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 20
+      }
+    },
+    {
+      "id": "shin1107/koch_new",
+      "version": "v2.1",
+      "frames": 64109,
+      "episodes": 151,
+      "ok": 136,
+      "review": 15,
+      "bad": 0,
+      "checks": {
+        "idle_end": 23,
+        "tracking_error": 15,
+        "idle_start": 5
+      }
+    },
+    {
+      "id": "Jamesbass/koch_cap_screw",
+      "version": "v2.1",
+      "frames": 7101,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 6,
+        "idle_end": 1
+      }
+    },
+    {
+      "id": "han5i5j1986/koch_lego_2024-10-16-01",
+      "version": "v2.0",
+      "frames": 11636,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 2
+      }
+    },
+    {
+      "id": "han5i5j1986/koch_lego_2024-10-17-01",
+      "version": "v2.0",
+      "frames": 12389,
+      "episodes": 50,
+      "ok": 50,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 5,
+        "idle_end": 1
+      }
+    },
+    {
+      "id": "imatrixlee/koch_test",
+      "version": "v2.0",
+      "frames": 14989,
+      "episodes": 53,
+      "ok": 53,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_end": 13,
+        "idle_start": 6
+      }
+    },
+    {
+      "id": "Sounderya/koch_pickplace_v1",
+      "version": "v3.0",
+      "frames": 106888,
+      "episodes": 210,
+      "ok": 209,
+      "review": 1,
+      "bad": 0,
+      "checks": {
+        "idle_end": 75,
+        "idle_start": 49,
+        "pause": 23,
+        "frozen_state": 1
+      }
+    },
+    {
+      "id": "rgarreta/koch_pick_place_lego_v6",
+      "version": "v2.0",
+      "frames": 16890,
+      "episodes": 51,
+      "ok": 50,
+      "review": 1,
+      "bad": 0,
+      "checks": {
+        "idle_end": 6,
+        "idle_start": 1,
+        "tracking_error": 1
+      }
+    },
+    {
+      "id": "m1b/koch_test1",
+      "version": "v2.1",
+      "frames": 108,
+      "episodes": 1,
+      "ok": 1,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_end": 1
+      }
+    },
+    {
+      "id": "T-K-233/koch_k1_pour_shot",
+      "version": "v2.0",
+      "frames": 44363,
+      "episodes": 80,
+      "ok": 80,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_end": 45,
+        "idle_start": 14,
+        "pause": 1
+      }
+    },
+    {
+      "id": "danaaubakirova/eval_koch_test",
+      "version": "v2.0",
+      "frames": 7500,
+      "episodes": 26,
+      "ok": 24,
+      "review": 2,
+      "bad": 0,
+      "checks": {
+        "too_short": 2,
+        "idle_end": 1,
+        "pause": 1
+      }
+    },
+    {
+      "id": "Dongkkka/koch_arm_gripper_embodiment_dataset",
+      "version": "v2.1",
+      "frames": 29680,
+      "episodes": 86,
+      "ok": 80,
+      "review": 3,
+      "bad": 3,
+      "checks": {
+        "too_short": 5,
+        "idle_end": 4,
+        "dead_episode": 3,
+        "pause": 1,
+        "tracking_error": 1
+      }
+    },
+    {
+      "id": "jianqiang03/koch_test",
+      "version": "v2.1",
+      "frames": 34054,
+      "episodes": 80,
+      "ok": 80,
+      "review": 0,
+      "bad": 0,
+      "checks": {
+        "idle_start": 7,
+        "idle_end": 6
+      }
+    },
+    {
+      "id": "Dongkkka/koch_arm_gripper_coffee_stick_to_green_bowl",
+      "version": "v2.1",
+      "frames": 7489,
+      "episodes": 20,
+      "ok": 15,
+      "review": 2,
+      "bad": 3,
+      "checks": {
+        "too_short": 5,
+        "dead_episode": 3,
+        "idle_end": 1
+      }
+    }
+  ]
+}

@@ -13,18 +13,32 @@ clashing episode numbers. A policy trained on that data quietly gets worse.
 
 ```bash
 pip install git+https://github.com/AI-WFox/khainhanh
-trajlint check lerobot/svla_so101_pickplace
+trajlint check lerobot/svla_so100_stacking --no-video
 ```
 
 ```
-lerobot/svla_so101_pickplace  (50 episodes, 11939 frames, 30 fps)
-  clean: 49   needs a look: 1   likely broken: 0
+lerobot/svla_so100_stacking  (56 episodes, 22956 frames, 30 fps)
+  clean: 51   needs a look: 1   likely broken: 4
 
   problem                episodes
-  idle_start                 5   Robot sits still at the start: can be trimmed
-  ...
-  report: trajlint-report/report.html
+  idle_start                19   Robot sits still at the start: can be trimmed
+  dead_episode               4   Robot state never changes: nothing was recorded
+  too_short                  3   Episode much shorter than the others (often an aborted take)
+  pause                      1   Robot holds still for a while mid-episode (often normal)
+
+  worst episodes: 37 (45), 38 (45), 39 (60), 55 (60)
 ```
+
+Yes, even curated datasets have them: episode 39 above is 14.5 seconds in which no
+joint moves at all.
+
+## What we found on the Hub
+
+We checked 6,953 episodes in 65 popular SO-100, SO-101 and Koch datasets.
+3% of episodes are likely broken, and 11 of the 65 datasets contain at least one:
+recordings merged under the same episode number, episodes where nothing moves,
+aborted takes. Almost 1 in 5 episodes starts with 1.5 s or more of the robot
+sitting idle. Details: [docs/week1-findings.md](docs/week1-findings.md).
 
 You get three files in `trajlint-report/`:
 
