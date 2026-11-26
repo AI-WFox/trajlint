@@ -88,7 +88,9 @@ trims idle time at the start and end of each episode (keeping 0.3 s of margin;
 `--no-trim` to skip), and renumbers everything so the result loads like any
 LeRobot v3.0 dataset. Videos are not re-encoded: only the per-episode video
 timestamps move, and the original video files are hard-linked or copied.
-Normalization statistics are kept from the source dataset.
+Normalization statistics are kept from the source dataset. Checked with LeRobot 0.7.0:
+the cleaned `svla_so100_stacking` loads with `LeRobotDataset`, and actions and
+camera frames match the source frame for frame, including trimmed episodes.
 
 ## Options
 
