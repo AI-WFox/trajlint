@@ -73,6 +73,23 @@ Every episode is judged against the other episodes of the same dataset, so
 thresholds adapt to the robot and the frame rate. An episode with any error is
 graded **likely broken**, with a warning **needs a look**, otherwise **clean**.
 
+## Clean a dataset
+
+```bash
+trajlint filter lerobot/svla_so100_stacking ./stacking-clean
+```
+
+```
+  kept 51 of 56 episodes, 21116 of 22956 frames (8% removed)
+```
+
+`filter` drops broken episodes (`--drop review` drops those that need a look too),
+trims idle time at the start and end of each episode (keeping 0.3 s of margin;
+`--no-trim` to skip), and renumbers everything so the result loads like any
+LeRobot v3.0 dataset. Videos are not re-encoded: only the per-episode video
+timestamps move, and the original video files are hard-linked or copied.
+Normalization statistics are kept from the source dataset.
+
 ## Options
 
 ```bash
@@ -89,7 +106,7 @@ Supports LeRobot dataset format v3.0 and v2.x.
 
 - [x] Table checks (states, actions, timestamps) and camera checks
 - [x] HTML / JSON report and keep-list
-- [ ] `trajlint filter`: write a cleaned copy of the dataset, with idle starts and ends trimmed
+- [x] `trajlint filter`: write a cleaned copy of a v3.0 dataset, with idle starts and ends trimmed
 - [ ] Learned quality score, validated by training the same policy on raw vs. filtered data
 - [ ] Public health board for datasets on the Hugging Face Hub
 

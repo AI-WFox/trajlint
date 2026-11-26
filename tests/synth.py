@@ -49,6 +49,9 @@ def make_dataset(root: Path, n_episodes: int = 12, length: int = 60, faults: dic
         if f == "pause":  # robot really held still
             state[20:45] = state[20]
             action[20:45] = action[20]
+        if f == "idle_start":  # robot waits 2 s before moving
+            state[:20] = state[20]
+            action[:20] = action[20]
         if f == "spike":
             action[30, 1] += 400.0
         if f == "nan":
