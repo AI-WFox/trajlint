@@ -21,6 +21,11 @@ BRIGHT_LEVEL = 245.0
 EXPOSURE_MIN_S = 1.0
 SHORT_TOLERANCE_FRAMES = 3
 MOVING_MIN = 0.5  # the robot must be moving for at least half of a frozen stretch
+DISPLACEMENT_MIN = 0.10  # ...and some joint must travel >10% of its range, enough to show in the image
+STILL_STEP = 0.002  # per-frame change (fraction of range) below which a joint counts as still
+CHANGE_LEVEL = 25.0  # a pixel "changed" if it moved by more than this (0-255)
+CHANGED_MIN = 0.001  # ...and a frame changed if more than 0.1% of pixels did (small objects count)
+BLANK_STD = 6.0  # an almost black/white frame is also almost uniform (a white background alone is fine)
 
 
 def _decode(path: Path) -> tuple[np.ndarray, np.ndarray, float]:
@@ -69,13 +74,13 @@ def _keyframes_are_dense(path: Path, probe_packets: int = 300) -> bool:
     return bool(np.median(gaps) <= 1.0 / SAMPLE_FPS)
 
 
-def check_videos(ds: Dataset, progress=None, moving: dict[int, np.ndarray] | None = None) -> list[Issue]:
-    """`moving[episode]` is a per-frame bool array: True where the robot was moving.
+def check_videos(ds: Dataset, progress=None, motion: dict[int, np.ndarray] | None = None) -> list[Issue]:
+    """`motion[episode]` holds joint states scaled to their dataset range (shape T x D).
 
-    A camera that shows no change while the robot sits still is just a static scene,
-    so a frozen image only counts while the robot is moving.
+    A camera that shows no change while the robot sits still, or barely moves, is
+    just a static scene, so a frozen image only counts while the robot clearly moves.
     """
-    moving = moving or {}
+    motion = motion or {}
     out: list[Issue] = []
     if not ds.camera_keys:
         return out
@@ -102,19 +107,25 @@ def check_videos(ds: Dataset, progress=None, moving: dict[int, np.ndarray] | Non
             continue
         for e, key, start, end in segs:
             out.extend(_check_segment(e, key, start, end, times, frames, duration, lengths[e], ds.fps,
-                                      moving.get(e)))
+                                      motion.get(e)))
     return out
 
 
-def _moving_fraction(mov: np.ndarray | None, t0: float, t1: float, fps: float) -> float:
-    if mov is None or len(mov) == 0:
-        return 1.0  # no joint data: judge the image alone
+def _robot_moves(track: np.ndarray | None, t0: float, t1: float, fps: float) -> bool:
+    """True if the robot was clearly moving between t0 and t1 (seconds from episode start)."""
+    if track is None or len(track) < 2:
+        return True  # no joint data: judge the image alone
     a = int(max(0, np.floor(t0 * fps)))
-    b = int(min(len(mov), np.ceil(t1 * fps) + 1))
-    return float(mov[a:b].mean()) if b > a else 0.0
+    b = int(min(len(track), np.ceil(t1 * fps) + 1))
+    if b - a < 2:
+        return False
+    seg = track[a:b]
+    moving = np.any(np.abs(np.diff(seg, axis=0)) > STILL_STEP, axis=1)
+    travel = float(np.max(seg.max(axis=0) - seg.min(axis=0)))
+    return bool(moving.mean() > MOVING_MIN and travel > DISPLACEMENT_MIN)
 
 
-def _check_segment(e, key, start, end, times, frames, duration, n_frames, fps, mov=None) -> list[Issue]:
+def _check_segment(e, key, start, end, times, frames, duration, n_frames, fps, track=None) -> list[Issue]:
     out: list[Issue] = []
     expected = n_frames / fps
     have = min(end, duration + 1.0 / fps) - start
@@ -127,27 +138,30 @@ def _check_segment(e, key, start, end, times, frames, duration, n_frames, fps, m
     if len(f) < 2:
         return out
 
-    diff = np.abs(np.diff(f, axis=0)).mean(axis=(1, 2))
-    frozen = np.concatenate([[False], diff < FROZEN_DIFF])
+    absdiff = np.abs(np.diff(f, axis=0))
+    # mean change misses a small object moving on a still background, so also count changed pixels
+    still = (absdiff.mean(axis=(1, 2)) < FROZEN_DIFF) & ((absdiff > CHANGE_LEVEL).mean(axis=(1, 2)) <= CHANGED_MIN)
+    frozen = np.concatenate([[False], still])
     span = t[-1] - t[0]
     runs = _runs(frozen)
     whole = any(a <= 1 and b >= len(f) for a, b in runs)
-    if whole and span >= FROZEN_MIN_S and _moving_fraction(mov, 0, span, fps) > MOVING_MIN:
+    if whole and span >= FROZEN_MIN_S and _robot_moves(track, 0, span, fps):
         out.append(Issue(e, "frozen_camera", "error",
                          "camera image never changes although the robot moves", camera=key))
     elif not whole:
         for a, b in runs:
             t0, t1 = t[max(a - 1, 0)], t[b - 1]
-            if t1 - t0 >= FROZEN_MIN_S and _moving_fraction(mov, t0, t1, fps) > MOVING_MIN:
+            if t1 - t0 >= FROZEN_MIN_S and _robot_moves(track, t0, t1, fps):
                 out.append(Issue(e, "frozen_camera", "warning",
                                  f"camera image frozen for {t1 - t0:.1f}s while the robot moves",
                                  start_s=float(t0), end_s=float(t1), camera=key))
                 break
 
     level = f.mean(axis=(1, 2))
+    uniform = f.std(axis=(1, 2)) < BLANK_STD
     for name, mask, sev_msg in (
-        ("dark_frames", level < DARK_LEVEL, "image almost black"),
-        ("overexposed", level > BRIGHT_LEVEL, "image almost white"),
+        ("dark_frames", (level < DARK_LEVEL) & uniform, "image almost black"),
+        ("overexposed", (level > BRIGHT_LEVEL) & uniform, "image almost white"),
     ):
         for a, b in _runs(mask):
             t0, t1 = t[a], t[b - 1] + 1.0 / SAMPLE_FPS

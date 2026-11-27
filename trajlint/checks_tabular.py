@@ -170,14 +170,14 @@ def check_episode(ep: Episode, ds: Dataset, st: DatasetStats) -> list[Issue]:
     return out
 
 
-def moving_masks(ds: Dataset, st: DatasetStats) -> dict[int, np.ndarray]:
-    """Per-frame True where at least one joint moved, for each episode with state data."""
+def motion_tracks(ds: Dataset, st: DatasetStats) -> dict[int, np.ndarray]:
+    """Per-episode joint states scaled by each joint's range in the dataset (1.0 = full range)."""
     out = {}
     if st.state_range is None:
         return out
     for ep in ds.episodes:
         if ep.state is not None and ep.length > 1 and np.all(np.isfinite(ep.state)):
-            out[ep.index] = ~_still_mask(ep.state, st.state_range)
+            out[ep.index] = ep.state / st.state_range
     return out
 
 
