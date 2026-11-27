@@ -65,7 +65,7 @@ sitting idle. Details: [docs/week1-findings.md](docs/week1-findings.md).
 | `duplicate` | warning | Same trajectory as another episode |
 | `too_short` / `too_long` | warning / info | Much shorter or longer than the other episodes |
 | `pause`, `idle_start`, `idle_end` | info | Robot holds still: usually fine, start/end can be trimmed |
-| `frozen_camera` | warning / error | Camera image stops changing |
+| `frozen_camera` | warning / error | Camera image stops changing while the robot moves |
 | `dark_frames` / `overexposed` | warning / error | Camera image almost black or white |
 | `video_short`, `video_missing`, `video_unreadable` | error | Video does not cover the episode, is missing, or cannot be decoded |
 
@@ -109,7 +109,8 @@ Supports LeRobot dataset format v3.0 and v2.x.
 - [x] Table checks (states, actions, timestamps) and camera checks
 - [x] HTML / JSON report and keep-list
 - [x] `trajlint filter`: write a cleaned copy of a v3.0 dataset, with idle starts and ends trimmed
-- [ ] Learned quality score, validated by training the same policy on raw vs. filtered data
+- [ ] Training experiment on PushT: same policy on corrupted vs. filtered data ([experiments/pusht](experiments/pusht), ready to run on Colab)
+- [ ] Learned quality score
 - [ ] Public health board for datasets on the Hugging Face Hub
 
 ## Development

@@ -4,7 +4,7 @@ import time
 from collections import Counter
 
 from . import __version__
-from .checks_tabular import DatasetStats, check_duplicates, check_episode, check_tracking, moving_masks
+from .checks_tabular import DatasetStats, check_duplicates, check_episode, check_tracking, motion_tracks
 from .checks_video import check_videos
 from .issues import SEVERITY_ORDER, Issue, episode_score, grade
 from .loader import Dataset
@@ -42,7 +42,7 @@ def run(ds: Dataset, video: bool = True, progress=None) -> dict:
     issues.extend(check_tracking(ds, st))
     issues.extend(check_duplicates(ds))
     if video and ds.camera_keys:
-        issues.extend(check_videos(ds, progress=progress, moving=moving_masks(ds, st)))
+        issues.extend(check_videos(ds, progress=progress, motion=motion_tracks(ds, st)))
 
     by_ep: dict[int, list[Issue]] = {ep.index: [] for ep in ds.episodes}
     for i in issues:

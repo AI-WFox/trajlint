@@ -1,5 +1,7 @@
 import json
 
+import numpy as np
+
 import pytest
 
 from trajlint.cli import main
@@ -91,3 +93,22 @@ def test_html_escapes_task_text(tmp_path):
     result = run(ds, video=False)
     result["dataset"]["id"] = "<script>x</script>"
     assert "<script>x" not in to_html(result, ds)
+
+
+def test_small_moving_object_is_not_a_frozen_camera():
+    # a 3x3 dot moving on a still background barely changes the mean image (like PushT)
+    from trajlint.checks_video import _check_segment
+
+    n = 40
+    frames = np.full((n, 48, 64), 200, np.uint8)
+    for i in range(n):
+        x = 5 + i
+        frames[i, 20:23, x:x + 3] = 40
+    times = np.arange(n) / 5.0
+    track = np.linspace(0, 1, n * 2)[:, None]  # robot moves the whole time (10 fps)
+    issues = _check_segment(0, "cam", 0.0, n / 5.0, times, frames, n / 5.0, n * 2, 10.0, track)
+    assert not [i for i in issues if i.check == "frozen_camera"]
+
+    still = np.repeat(frames[:1], n, axis=0)
+    issues = _check_segment(0, "cam", 0.0, n / 5.0, times, still, n / 5.0, n * 2, 10.0, track)
+    assert [i for i in issues if i.check == "frozen_camera"]
