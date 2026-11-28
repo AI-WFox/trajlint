@@ -189,7 +189,7 @@ def evaluate(arm, episodes=None):
     shutil.rmtree(out, ignore_errors=True)
     extra = "--policy.num_inference_steps=2 --eval.max_episode_steps=20 " if SMOKE else ""
     sh(f"lerobot-eval --policy.path={ck / 'pretrained_model'} --policy.device={DEVICE} --env.type=pusht "
-       f"--eval.n_episodes={episodes} --eval.batch_size={min(50, episodes)} --seed={SEED} {extra}--output_dir={out}")
+       f"--eval.n_episodes={episodes} --eval.batch_size={min(10, episodes)} --seed={SEED} {extra}--output_dir={out}")
     o = json.loads((out / "eval_info.json").read_text())["overall"]
     r = {"arm": arm, "steps": int(ck.name), "n_episodes": o["n_episodes"], "n_success": o["n_success"],
          "pc_success": o["pc_success"], "ci95": o.get("pc_success_ci95"), "avg_max_reward": o["avg_max_reward"]}
