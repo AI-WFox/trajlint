@@ -109,7 +109,8 @@ Supports LeRobot dataset format v3.0 and v2.x.
 - [x] Table checks (states, actions, timestamps) and camera checks
 - [x] HTML / JSON report and keep-list
 - [x] `trajlint filter`: write a cleaned copy of a v3.0 dataset, with idle starts and ends trimmed
-- [ ] Training experiment on PushT: same policy on corrupted vs. filtered data ([experiments/pusht](experiments/pusht), ready to run on Colab)
+- [x] Training experiment on PushT: same policy on corrupted vs. filtered data ([experiments/pusht](experiments/pusht)): 30% to 39% success after filtering, first seed
+- [ ] More seeds for the PushT experiment
 - [ ] Learned quality score
 - [ ] Public health board for datasets on the Hugging Face Hub
 

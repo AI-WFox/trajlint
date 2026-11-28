@@ -39,7 +39,7 @@ T4 GPU and run all cells. Checkpoints are copied to Google Drive
 just run all cells again: finished arms are skipped, unfinished ones resume.
 A speed test cell prints how long the full run will take before training starts.
 
-Settings used: LeRobot 0.7.0, `diffusion` policy with a smaller U-Net
+Settings used for the run below: LeRobot 0.7.0, `diffusion` policy with a smaller U-Net
 (`down_dims=[256,512,1024]`, 76M parameters), batch 64, 20k steps, seed 1000,
 100 evaluation episodes per arm. All arms use exactly the same settings, so the
 comparison is fair even though 20k steps is shorter than the LeRobot reference run.
@@ -54,4 +54,22 @@ SMOKE_REPO=$PWD/../.. python /tmp/smoke.py
 
 ## Results
 
-Not run yet.
+First full run (2026-11-28, Colab T4, one seed, 100 evaluation episodes per arm):
+
+| arm | episodes | success | 95% CI | mean max coverage |
+| --- | --- | --- | --- | --- |
+| `corrupted` | 216 | 30% (30/100) | 21.9-39.6% | 0.857 |
+| `filtered` | 206 | **39% (39/100)** | 30.0-48.8% | **0.886** |
+| `clean` | 206 | 37% (37/100) | 28.2-46.8% | 0.880 |
+
+Training on the corrupted data costs about 7 points of success compared with
+the original data, and filtering it with trajlint brings it back to the
+level of the original (39% vs 37%).
+
+Read this as a first signal, not a proof: it is one seed, and with 100
+episodes per arm the gap between `corrupted` and `filtered` (9 points) is not
+statistically significant (two-proportion test, p about 0.18). The next run
+adds two more seeds for `corrupted` and `filtered`.
+
+A 3,000-step pilot run (both arms near 1-2% success) is not reported: the
+policy had not learned the task yet.
